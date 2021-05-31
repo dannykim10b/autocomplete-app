@@ -26,7 +26,7 @@ function Autocomplete() {
 
         //If the search is not an empty string, fetch API and set the response to suggestions
         if(e.target.value !== "") {
-            axios.get('/students', { params: {
+            axios.get('/students/', { params: {
                 search: e.target.value
             }})
             .then(resp => {
