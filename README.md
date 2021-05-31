@@ -10,7 +10,7 @@ docker-compose up
 
 CURL COMMANDS
 Type any string after = to search the database of students by string
-docker exec backend-docker curl 'http://localhost:5000/student/?search='
+docker exec backend-docker curl 'http://localhost:5000/students/?search='
 
 API TESTING COMMAND
 docker exec backend-docker pytest
