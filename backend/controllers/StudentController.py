@@ -13,22 +13,25 @@ db = SQLAlchemy()
 def search():
     searchValue = request.args.get('search').lower()
 
-    studentsByFirstName = Student.query.order_by(Student.last_name).filter(
-        func.concat(Student.first_name, ' ',
-                    Student.last_name).ilike(f'{searchValue}%')
-    )
+    if searchValue:
+        studentsByFirstName = Student.query.order_by(Student.last_name).filter(
+            func.concat(Student.first_name, ' ',
+                        Student.last_name).ilike(f'{searchValue}%')
+        )
 
-    studentsByLastName = Student.query.order_by(Student.last_name).filter(
-        func.concat(Student.last_name, ' ',
-                    Student.first_name).ilike(f'{searchValue}%')
-    )
+        studentsByLastName = Student.query.order_by(Student.last_name).filter(
+            func.concat(Student.last_name, ' ',
+                        Student.first_name).ilike(f'{searchValue}%')
+        )
 
-    studentsByFirstName = [s.serialize for s in studentsByFirstName]
-    studentsByLastName = [s.serialize for s in studentsByLastName]
+        studentsByFirstName = [s.serialize for s in studentsByFirstName]
+        studentsByLastName = [s.serialize for s in studentsByLastName]
 
-    studentsByFirstName.extend(studentsByLastName)
+        studentsByFirstName.extend(studentsByLastName)
 
-    return jsonify(studentsByFirstName), 200
+        return jsonify(studentsByFirstName), 200
+    else:
+        return {"err": "Invalid Search"}, 400
 
 
 # def store():
