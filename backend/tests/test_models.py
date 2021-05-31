@@ -1,5 +1,4 @@
 from models.Student import Student
-# from flask import jsonify
 
 
 def test_new_student():
