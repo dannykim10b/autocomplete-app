@@ -21,8 +21,6 @@ services:
 
   db:
     build: ./db
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     container_name: database-docker
