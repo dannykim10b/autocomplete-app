@@ -6,7 +6,7 @@ from models.Student import db
 from routes.student_bp import student_bp
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 app.config.from_object('config')
 
 db.init_app(app)
