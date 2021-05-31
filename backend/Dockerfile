@@ -1,6 +1,6 @@
-FROM python:3
+FROM python:3.9.5-buster
 
-WORKDIR /app/backend
+WORKDIR /backend
 
 COPY ./requirements.txt .
 
@@ -9,4 +9,6 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 CMD ["flask", "run", "--host=0.0.0.0"]
+
+ENV PYTHONPATH=/backend
 
