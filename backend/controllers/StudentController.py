@@ -5,6 +5,10 @@ from sqlalchemy import func
 
 db = SQLAlchemy()
 
+# Recieves a string request from the frontend and uses that string to search the database
+# for matches by first name and last name. The two query results are combined, jsonified
+# and sent back to the frontend
+
 
 def search():
     searchValue = request.args.get('search').lower()
